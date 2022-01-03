@@ -1,0 +1,283 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Metal+Mania&family=Nosifer&family=Piedra&family=Roboto+Slab:wght@400;700&display=swap');
+
+/* --- body styling incl materialize css for sticky footer --- */
+body {
+    background: url('../images/white-hands-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #a52612;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* --- materialize css for sticky footer ---  */
+main {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+  }
+
+/* --- headers --- */
+h1, .brand-logo {
+    font-family: 'Nosifer', cursive;  
+}
+
+h1 {
+    text-shadow: 2px 2px 10px whitesmoke;
+    font-family: 'Jolly Lodger', cursive;
+    font-size: 80px;
+}
+
+h1, h2, h4, p {
+    text-align: center;
+    margin-top: 50px;  
+}
+
+h2, h3, h4 {
+    font-family: 'Jolly Lodger', cursive;
+    text-shadow: 2px 2px 10px whitesmoke;
+}
+
+
+/* --- nav bar styling --- */
+.nav-wrapper {
+    background-color: #2f3437;
+}
+
+nav li a {
+    font-family: 'Jolly Lodger', cursive;
+    font-size: 30px;
+}
+.dropdown-items li>a {
+    font-size: 20px;
+}
+
+
+/* --- footer --- */
+footer {
+    margin-top: 20px;
+    height: 70px;
+    background-color: #2f3437;
+}
+
+.footer-div {
+    height: 70px;
+}
+
+.footer-text {
+    margin-top: 10px;
+    color: whitesmoke;
+    font-size: 25px;
+    font-family: 'Jolly Lodger', cursive;
+}
+.footer-text a {
+    color: whitesmoke;
+    margin: 5px;
+    
+}
+.social-links {
+    font-size: 22px;
+    padding-left: 5px;
+}
+
+/* --- forms --- */
+form {
+    margin-top: 80px;
+}
+
+.input-field>label {
+    color: #727070;
+}
+.form-row {
+    margin: 40px 20px 40px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.register-links {
+    color: #a52612;
+}
+.form-icon {
+    padding-right: 10px;
+}
+
+.label-text {
+    color: #9e9e9e;
+    font-size: 12px;
+}
+
+/* --- buttons --- */
+.btn {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.btn-small {
+    margin-bottom: 20px;
+}
+
+.search-button {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.reset-icon {
+    padding-right: 8px;
+}
+
+.button-send {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.button-send i {
+    padding-left: 10px;
+}
+
+.add-icon {
+    padding-left: 10px;
+}
+
+/* --- flash messages --- */
+.flashes h4 {
+    line-height: 3;
+}
+
+/* --- home page --- */
+.intro-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2f3437;
+    text-shadow: 2px 2px 10px whitesmoke;
+}
+.intro-text a {
+    color:#a52612;
+}
+
+.category-box {
+    height: 250px;
+    width: 50%;  
+    margin: 20px;
+    -webkit-box-shadow: 0px 2px 10px 2px #b8b8b8;
+            box-shadow: 0px 2px 10px 2px #b8b8b8;
+}
+
+.category-box h4 a {
+    font-size: 70px;
+    color: #a52612;
+}
+
+.category-icon {
+    font-size: 40px;
+    color: #a52612;
+}
+
+/* --- reviews page --- */
+
+.card {
+    height: 560px;
+
+}
+.card-image {
+    height: 65%;
+}
+
+/* code to resize image and keep aspect ratio for user uploaded image urls from stack overflow */
+/* https://stackoverflow.com/questions/12991351/css-force-image-resize-and-keep-aspect-ratio */ 
+.category-image {
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    display: inline-block !important;
+}
+
+.review-heading {
+    font-family: 'Jolly Lodger', cursive;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.review-content {
+    color: #2f3437;
+}
+
+.star-rating i {
+    color: #a52612;
+}
+
+.search-row {
+    margin-bottom: 5px;
+}
+
+.sort-column {
+    text-align: right;
+}
+.sort-dropdown {
+    color: #a52612;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+/* --- profile page --- */
+.profile-header {
+    margin-top: 0px;
+}
+
+/* --- media queries --- */
+
+/* Screens under 575px */
+@media screen and (max-width: 575px) {
+    nav .brand-logo {
+        font-size: 15px;
+        left: 35%;
+    }
+    footer {
+        height: auto;
+    }
+    .footer-text {
+        font-size: 20px;
+    }
+    form {
+        margin-top: 40px;
+    }
+    .form-row {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Screens under 767px */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    nav .brand-logo {
+        font-size: 1.8rem;
+    }
+    footer {
+        height: auto;
+    }
+    .footer-text {
+        font-size: 20px;
+    }
+    .social-links {
+        font-size: 20px;
+    }
+}
+
+/* Screens above 978px */
+@media screen and (min-width: 978px) {
+    .brand-logo {
+        margin-left: 20px;
+    }
+}

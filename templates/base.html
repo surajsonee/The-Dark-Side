@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reviews of Horror Books, Movies and TV Shows">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" 
+        referrerpolicy="no-referrer" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon-32x32.png')}}">
+    {% block styles %}
+    {% endblock %}
+    <title>The Dark Side</title>
+</head>
+<body>
+    <header>
+
+        <!-- dropdown menu for main nav bar -->
+        <ul id="dropdown1" class="dropdown-content dropdown-items">
+            <li><a class="black-text" href="{{ url_for('book_reviews') }}">Books</a></li>
+            <li><a class="black-text" href="{{ url_for('movie_reviews') }}">Movies</a></li>
+            <li><a class="black-text" href="{{ url_for('tvshow_reviews') }}">TV Shows</a></li>
+            <li><a class="black-text" href="{{ url_for('get_reviews') }}">All reviews</a></li>
+        </ul>
+        <!-- dropdown menu for collapsible side navbar -->
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="{{ url_for('book_reviews') }}">Books</a></li>
+            <li><a href="{{ url_for('movie_reviews') }}">Movies</a></li>
+            <li><a href="{{ url_for('tvshow_reviews') }}">TV Shows</a></li>
+            <li><a href="{{ url_for('get_reviews') }}">All reviews</a></li>
+        </ul>
+
+        <!-- main nav bar utilising materialize css-->
+        <nav>
+            <div class="nav-wrapper">
+              <a href="{{ url_for('home') }}" class="brand-logo">The Dark Side</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger right" title="Navigation menu"><i class="fas fa-bars"></i></a>
+              <ul class="right hide-on-med-and-down">
+                <!-- nav links to display whether user logged in or not -->
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="dropdown-trigger" href="{{ url_for('get_reviews') }}" data-target="dropdown1">Reviews <i class="fas fa-sort-down"></i></a></li>
+                <!-- nav links to display if registered user is logged in -->
+                {% if session.user %}
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                    <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                <!-- nav links to display if no registered user is logged in  -->
+                {% else %}
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>      
+                {% endif %}
+                <!-- nav link to display whether user logged in or not -->
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+              </ul>
+            </div>
+        </nav>
+
+        <!-- collapsible side navbar utilising materialize css -->
+            <ul class="sidenav" id="mobile-demo">
+                <!-- nav link to display whether user logged in or not -->
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="dropdown-trigger" href="{{ url_for('get_reviews') }}" data-target="dropdown2">Reviews <i class="fas fa-sort-down right"></i></a></li>
+                <!-- nav links to display if registered user is logged in -->
+                {% if session.user %}
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                    <li><a href="{{ url_for('add_review') }}">Add Review</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                 <!-- nav links to display if no registered user is logged in  -->
+                {% else %}
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                {% endif %}
+                <!-- nav link to display whether user logged in or not -->
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>     
+    </header>
+
+    <section>
+
+        <!-- flash messages from flask framework -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages: %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="center-align grey lighten-4">{{ message }}</h4>
+                    </div>
+                {% endfor%}
+            {% endif %}
+        {% endwith %}
+    
+    </section>
+
+    <main class="container">
+      {% block content%}
+      {% endblock%}
+    </main>
+
+    <!-- footer utilizing materialize css -->
+    <footer>
+          <div class="row">
+            <div class="col s12 m6 footer-div">
+                <p class="footer-text">
+                    <a href="{{ url_for('contact') }}">Get in Touch</a>
+                </p>
+            </div>
+            <div class="col s12 m6 footer-div">
+                <p class="footer-text">Follow us on social media - 
+                    <a class="social-links" href="https://www.facebook.com/" title="Facebook" target="_blank" rel="noopener"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="social-links" href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="social-links" href="https://www.instagram.com" title="Instagram" target="_blank" rel="noopener"><i
+                        class="fab fa-instagram"></i></a>
+                </p>
+            </div>
+          </div>
+      </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

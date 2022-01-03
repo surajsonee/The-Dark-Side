@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>The Dark Side</h1>
+  <h2>Welcome to The Dark Side, where like minded horror fans can share reviews on all things horror</h2>
+  <p class="intro-text">Want to find your next great read, something terrifying for movie night, next addictive horror tv series?
+    Browse the categories below or <a href="{{ url_for('get_reviews') }}">click here to see all reviews</a>. Favourite show or book not here? Join the horror community and
+    add your own reviews to share with everyone. <br><a href="{{ url_for('register') }}">Sign up now</a> for a free account!
+    Already registered? Head over to our <a href="{{ url_for('login') }}">login page</a>.</p>
+
+  <!-- Boxes to show review categories -->
+  <div class="row">
+      <div class="col s12 l3 offset-l1 hoverable category-box">
+          <h4><a href="{{ url_for('book_reviews') }}">Books</a>
+          <p><i class="fas fa-book-open category-icon"></i></p>
+        </h4>
+      </div>
+      <div class="col s12 l3 hoverable category-box">
+          <h4><a href="{{ url_for('movie_reviews') }}">Movies</a>
+          <p><i class="fas fa-film category-icon"></i></p>
+        </h4>
+      </div>
+      <div class="col s12 l3 hoverable category-box">
+          <h4><a href="{{ url_for('tvshow_reviews') }}">TV Shows</a>
+          <p><i class="fas fa-tv category-icon"></i></p>
+        </h4>
+      </div>
+  </div>
+
+{% endblock %}
